@@ -42,7 +42,7 @@ class Extractor(object):
             if encoding.lower() == 'text/html':
                 encoding = chardet.detect(self.data)['encoding']
             try:
-                self.data = unicode(self.data, encoding)
+                self.data = unicode(self.data, encoding, errors='ignore')
             except NameError:
                 self.data = self.data.decode(encoding)
         elif 'html' in kwargs:
